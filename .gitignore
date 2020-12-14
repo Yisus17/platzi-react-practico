@@ -102,3 +102,6 @@ dist
 
 # TernJS port file
 .tern-port
+
+#Proyecto de prueba
+ProyectoEjemplo/node_modules/
