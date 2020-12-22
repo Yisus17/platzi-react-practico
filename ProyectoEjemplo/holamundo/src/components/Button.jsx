@@ -1,15 +1,51 @@
 import React from "react";
 
-//Componente stateless
+class Button extends React.Component {
+  state = {
+    count: 0,
+  };
 
-//En este punto, el elemento hará render del texto que venga como property
-const Button = (props) => {
-  const { text } = props; //De esta forma podemos extraer los keys de todas las properties
-  return (
-    <div>
-      <button type="button">{props.text}</button>
-      <button type="button">{text}</button>
-    </div>
-  );
-};
+  handleClickAddApples = () => {
+    this.setState({
+      count: this.state.count + 1,
+    });
+  };
+
+  handleClickClean = () => {
+    this.setState({
+      count: 0,
+    });
+  };
+
+  handleClickDeleteApples = () => {
+    if (this.state.count > 0) {
+      this.setState({
+        count: this.state.count - 1,
+      });
+    }else{
+      alert("La canasta esta vacia!");
+    }
+  };
+
+  render() {
+    const { count } = this.state;
+    return (
+      <div>
+        <h1>Manzanas: {count}</h1>
+        <button type="button" onClick={this.handleClickAddApples}>
+          Agregar
+        </button>
+
+        <button type="button" onClick={this.handleClickDeleteApples}>
+          Quitar
+        </button>
+
+        <button type="button" onClick={this.handleClickClean}>
+          Vaciar canasta
+        </button>
+      </div>
+    );
+  }
+}
+
 export default Button;
